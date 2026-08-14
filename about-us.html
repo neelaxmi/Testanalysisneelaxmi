@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | NEET Ranker</title>
+    <meta name="description" content="NEET Ranker is a free performance dashboard built under the NEELAXMI project to help NEET aspirants turn raw marks into actionable insight." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://neetranker.example.com/about-us.html" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="neelaxmi.png">
+    <script>
+        tailwind.config = { theme: { extend: {
+            fontFamily: { sans: ['Inter','sans-serif'], display: ['Plus Jakarta Sans','sans-serif'], mono: ['JetBrains Mono','monospace'] },
+            colors: { brand: { 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca' } }
+        } } }
+    </script>
+    <style>
+        body { background-color: #f8fafc; color: #1e293b; }
+        .hero-bg { background-color: #0b0f1e; background-image: radial-gradient(at 0% 0%, hsla(253,16%,10%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%); }
+        .glass-card { background: rgba(255,255,255,0.95); border: 1px solid rgba(255,255,255,0.2); border-radius: 1rem; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05); }
+        .btn-gradient { background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%); }
+        .eyebrow { font-family: 'JetBrains Mono', monospace; letter-spacing: 0.25em; }
+        .prose-content h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.25rem; color: #1e293b; margin-top: 2.25rem; margin-bottom: 0.75rem; }
+        .prose-content h2:first-child { margin-top: 0; }
+        .prose-content p { color: #475569; line-height: 1.75; font-size: 0.9rem; }
+        .prose-content a { color: #4f46e5; font-weight: 600; }
+        a:focus-visible, button:focus-visible { outline: 2px solid #6366f1; outline-offset: 2px; border-radius: 4px; }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="hero-bg">
+        <nav class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center overflow-hidden shadow-lg border border-white/20 shrink-0">
+                    <img src="neelaxmi.png" alt="NEET Ranker logo" class="w-full h-full object-cover">
+                </div>
+                <span class="font-display font-bold text-xl text-white">NEET<span class="text-indigo-300">Ranker</span></span>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-sm font-medium text-indigo-100/80 hover:text-white transition hidden sm:inline">Home</a>
+                <a href="dashboard.html" class="btn-gradient text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-lg">Launch Dashboard</a>
+            </div>
+        </nav>
+        <div class="max-w-3xl mx-auto px-4 pt-4 pb-16">
+            <p class="eyebrow text-indigo-300 text-xs font-bold mb-3">ABOUT</p>
+            <h1 class="font-display font-extrabold text-3xl md:text-4xl text-white tracking-tight">Turning raw marks into insight</h1>
+        </div>
+    </div>
+
+    <main class="max-w-3xl mx-auto px-4 py-14">
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="md:col-span-2 prose-content">
+                <h2>Why we built NEET Ranker</h2>
+                <p>Most NEET aspirants take dozens of mock tests over their preparation, but by the tenth or twentieth test, the scores start to blur together in a notebook or a messy spreadsheet. It's easy to see that a score went up or down — much harder to see <em>why</em>. NEET Ranker exists to close that gap: log a test in a couple of minutes, tag why each question was missed, and let the dashboard find the pattern you can't see from inside a single test.</p>
+
+                <h2>Part of the NEELAXMI project</h2>
+                <p>NEET Ranker is developed under <strong>NEELAXMI THE UNION</strong>, an ecosystem of free tools built for students. The project's guiding idea — reflected in the logo you see across the site — is a simple one: raw effort, organized well, is what actually moves a rank.</p>
+
+                <h2>Independent and unofficial</h2>
+                <p>NEET Ranker is an independent, community-built tool. It is <strong>not affiliated with, endorsed by, or connected to</strong> the National Testing Agency (NTA) or any official body that conducts or administers NEET. Every rank and percentile figure shown is a self-calculated estimate for personal study use — always refer to official NTA communications for anything that matters for your actual exam or admission.</p>
+
+                <h2>Open source</h2>
+                <p>The NEET Ranker codebase is released under the MIT License, in keeping with NEELAXMI's practice of building tools in the open.</p>
+            </div>
+
+            <aside>
+                <div class="glass-card p-6 text-center">
+                    <img src="owner.jpeg" alt="MRIDUL, Project Head of NEELAXMI THE UNION" class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-indigo-50 shadow-md">
+                    <p class="font-display font-bold text-gray-800">MRIDUL</p>
+                    <p class="text-xs text-gray-400 mb-4">Project Head, NEELAXMI THE UNION</p>
+                    <a href="https://sakssenowner.netlify.app" target="_blank" rel="noopener" class="text-xs font-bold text-indigo-600 hover:text-indigo-700">Know more about the developer →</a>
+                </div>
+                <div class="glass-card p-6 mt-6">
+                    <h3 class="font-display font-bold text-sm text-gray-800 mb-3">Ecosystem links</h3>
+                    <ul class="space-y-2.5 text-xs text-gray-500">
+                        <li><a href="https://sakssenowner.netlify.app" target="_blank" rel="noopener" class="hover:text-indigo-600 font-medium"><i class="fas fa-globe w-4 text-gray-400"></i> Official Website</a></li>
+                        <li><a href="https://t.me/NEELAXMI_OFFICIAL" target="_blank" rel="noopener" class="hover:text-indigo-600 font-medium"><i class="fab fa-telegram w-4 text-gray-400"></i> Telegram Channel</a></li>
+                        <li><a href="https://m.youtube.com/@NEELAXMI-MUSICVIBES" target="_blank" rel="noopener" class="hover:text-indigo-600 font-medium"><i class="fab fa-youtube w-4 text-gray-400"></i> YouTube</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="bg-indigo-950 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 py-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-indigo-200/50">
+            <p>&copy; 2026 NEET Ranker. Part of the NEELAXMI Union.</p>
+            <div class="flex flex-wrap justify-center gap-x-5 gap-y-1">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
+                <a href="terms-of-service.html" class="hover:text-white transition">Terms of Service</a>
+                <a href="contact.html" class="hover:text-white transition">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

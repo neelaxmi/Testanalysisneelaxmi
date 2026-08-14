@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy | NEET Ranker</title>
+    <meta name="description" content="How NEET Ranker collects, stores, and protects your account and test-result data, including Firebase storage and AdSense cookie use." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://neetranker.example.com/privacy-policy.html" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="neelaxmi.png">
+    <script>
+        tailwind.config = { theme: { extend: {
+            fontFamily: { sans: ['Inter','sans-serif'], display: ['Plus Jakarta Sans','sans-serif'], mono: ['JetBrains Mono','monospace'] },
+            colors: { brand: { 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca' } }
+        } } }
+    </script>
+    <style>
+        body { background-color: #f8fafc; color: #1e293b; }
+        .hero-bg { background-color: #0b0f1e; background-image: radial-gradient(at 0% 0%, hsla(253,16%,10%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%); }
+        .glass-card { background: rgba(255,255,255,0.95); border: 1px solid rgba(255,255,255,0.2); border-radius: 1rem; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05); }
+        .btn-gradient { background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%); }
+        .eyebrow { font-family: 'JetBrains Mono', monospace; letter-spacing: 0.25em; }
+        .prose-content h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.25rem; color: #1e293b; margin-top: 2.25rem; margin-bottom: 0.75rem; }
+        .prose-content h2:first-child { margin-top: 0; }
+        .prose-content p, .prose-content li { color: #475569; line-height: 1.75; font-size: 0.9rem; }
+        .prose-content ul { list-style: disc; padding-left: 1.25rem; margin: 0.75rem 0; }
+        .prose-content li { margin-bottom: 0.4rem; }
+        .prose-content a { color: #4f46e5; font-weight: 600; }
+        a:focus-visible, button:focus-visible { outline: 2px solid #6366f1; outline-offset: 2px; border-radius: 4px; }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="hero-bg">
+        <nav class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center overflow-hidden shadow-lg border border-white/20 shrink-0">
+                    <img src="neelaxmi.png" alt="NEET Ranker logo" class="w-full h-full object-cover">
+                </div>
+                <span class="font-display font-bold text-xl text-white">NEET<span class="text-indigo-300">Ranker</span></span>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-sm font-medium text-indigo-100/80 hover:text-white transition hidden sm:inline">Home</a>
+                <a href="dashboard.html" class="btn-gradient text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-lg">Launch Dashboard</a>
+            </div>
+        </nav>
+        <div class="max-w-3xl mx-auto px-4 pt-4 pb-16">
+            <p class="eyebrow text-indigo-300 text-xs font-bold mb-3">LEGAL</p>
+            <h1 class="font-display font-extrabold text-3xl md:text-4xl text-white tracking-tight">Privacy Policy</h1>
+            <p class="text-indigo-100/60 text-sm mt-3">Last updated: August 13, 2026</p>
+        </div>
+    </div>
+
+    <main class="max-w-3xl mx-auto px-4 py-14">
+        <div class="glass-card p-6 md:p-10 mb-8 border-l-4 border-amber-400">
+            <p class="text-xs text-gray-500 leading-relaxed"><i class="fas fa-circle-info text-amber-500 mr-1.5"></i><strong>Template notice:</strong> this policy describes how the NEET Ranker application actually works today. It is a starting point, not a substitute for review by a qualified lawyer familiar with applicable law (including India's Digital Personal Data Protection Act, 2023) before you publish or submit it for AdSense review.</p>
+        </div>
+
+        <div class="prose-content">
+            <h2>1. Who we are</h2>
+            <p>NEET Ranker is a free test-tracking dashboard built and operated under the NEELAXMI project. This policy explains what information the application collects when you create an account and log test results, and how that information is used.</p>
+
+            <h2>2. Information we collect</h2>
+            <ul>
+                <li><strong>Account information:</strong> the email address and password you use to sign up, handled by Firebase Authentication.</li>
+                <li><strong>Test result data:</strong> the marks, subject breakdowns, and mistake-category tags you enter for each mock test, stored in your own Firestore document.</li>
+                <li><strong>Basic technical data:</strong> standard information any website receives, such as browser type and pages visited, which may be collected by our hosting provider and, once active, Google AdSense.</li>
+            </ul>
+            <p>We do not ask for your name, phone number, school, or any government ID to use the dashboard.</p>
+
+            <h2>3. How your information is stored</h2>
+            <p>Your account and test results are stored using Google Firebase (Authentication and Firestore). Data is associated with your unique account ID, and Firestore security rules are configured so that only your signed-in account can read or write your own test results.</p>
+
+            <h2>4. Cookies and advertising</h2>
+            <p>This site is built to run Google AdSense. Once active, Google and its partners may use cookies to serve ads based on your visits to this and other sites. You can review or opt out of personalized advertising through <a href="https://adssettings.google.com" target="_blank" rel="noopener">Google Ads Settings</a>, and read more about how Google uses data in the <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google Partner Sites policy</a>. The dashboard app itself does not use advertising or tracking cookies beyond what Firebase Authentication requires to keep you signed in.</p>
+
+            <h2>5. Third-party services</h2>
+            <p>The app loads a small number of third-party libraries to function: Firebase (authentication and database), Chart.js (charts), Font Awesome and Google Fonts (icons and typography), and Shepherd.js (the onboarding tour). These are loaded from their respective content delivery networks and are subject to those providers' own privacy practices.</p>
+
+            <h2>6. Your choices</h2>
+            <p>You can edit or delete any test result at any time from your dashboard. To delete your account entirely, contact us using the details on our <a href="contact.html">Contact page</a> and we will remove your account data.</p>
+
+            <h2>7. Children's privacy</h2>
+            <p>NEET Ranker is intended for NEET aspirants, most of whom are in their final years of secondary school. The service is not directed at children under 13, and we do not knowingly collect information from children under that age. If you believe a child has created an account without appropriate consent, please contact us so we can remove it.</p>
+
+            <h2>8. Changes to this policy</h2>
+            <p>We may update this policy as the application changes. Material changes will be reflected by updating the "Last updated" date above.</p>
+
+            <h2>9. Contact</h2>
+            <p>Questions about this policy can be sent through our <a href="contact.html">Contact page</a>.</p>
+        </div>
+    </main>
+
+    <footer class="bg-indigo-950 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 py-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-indigo-200/50">
+            <p>&copy; 2026 NEET Ranker. Part of the NEELAXMI Union.</p>
+            <div class="flex flex-wrap justify-center gap-x-5 gap-y-1">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="about-us.html" class="hover:text-white transition">About Us</a>
+                <a href="terms-of-service.html" class="hover:text-white transition">Terms of Service</a>
+                <a href="contact.html" class="hover:text-white transition">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

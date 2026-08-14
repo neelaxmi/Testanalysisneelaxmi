@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | NEET Ranker</title>
+    <meta name="description" content="Get in touch with the NEET Ranker team for support, feedback, or account requests via Telegram or email." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://neetranker.example.com/contact.html" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="neelaxmi.png">
+    <script>
+        tailwind.config = { theme: { extend: {
+            fontFamily: { sans: ['Inter','sans-serif'], display: ['Plus Jakarta Sans','sans-serif'], mono: ['JetBrains Mono','monospace'] },
+            colors: { brand: { 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca' } }
+        } } }
+    </script>
+    <style>
+        body { background-color: #f8fafc; color: #1e293b; }
+        .hero-bg { background-color: #0b0f1e; background-image: radial-gradient(at 0% 0%, hsla(253,16%,10%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%); }
+        .glass-card { background: rgba(255,255,255,0.95); border: 1px solid rgba(255,255,255,0.2); border-radius: 1rem; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05); transition: transform .25s ease, box-shadow .25s ease; }
+        .btn-gradient { background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%); }
+        .eyebrow { font-family: 'JetBrains Mono', monospace; letter-spacing: 0.25em; }
+        a:focus-visible, button:focus-visible { outline: 2px solid #6366f1; outline-offset: 2px; border-radius: 4px; }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="hero-bg">
+        <nav class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center overflow-hidden shadow-lg border border-white/20 shrink-0">
+                    <img src="neelaxmi.png" alt="NEET Ranker logo" class="w-full h-full object-cover">
+                </div>
+                <span class="font-display font-bold text-xl text-white">NEET<span class="text-indigo-300">Ranker</span></span>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-sm font-medium text-indigo-100/80 hover:text-white transition hidden sm:inline">Home</a>
+                <a href="dashboard.html" class="btn-gradient text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-lg">Launch Dashboard</a>
+            </div>
+        </nav>
+        <div class="max-w-3xl mx-auto px-4 pt-4 pb-16">
+            <p class="eyebrow text-indigo-300 text-xs font-bold mb-3">GET IN TOUCH</p>
+            <h1 class="font-display font-extrabold text-3xl md:text-4xl text-white tracking-tight">Contact Us</h1>
+            <p class="text-indigo-100/60 text-sm mt-3 max-w-lg">Questions, bug reports, or account requests — here's how to reach the team behind NEET Ranker.</p>
+        </div>
+    </div>
+
+    <main class="max-w-3xl mx-auto px-4 py-14">
+        <div class="grid sm:grid-cols-2 gap-5">
+            <a href="https://t.me/sak_speaks" target="_blank" rel="noopener" class="glass-card p-6 hover:-translate-y-1 hover:shadow-lg">
+                <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center text-xl mb-4"><i class="fab fa-telegram-plane"></i></div>
+                <h2 class="font-display font-bold text-gray-800 mb-1">Support Chat</h2>
+                <p class="text-xs text-gray-500 leading-relaxed">The fastest way to reach us — direct Telegram support for bugs, account issues, and feedback.</p>
+                <p class="text-xs font-bold text-indigo-600 mt-3">t.me/sak_speaks →</p>
+            </a>
+            <a href="https://t.me/NEELAXMI_OFFICIAL" target="_blank" rel="noopener" class="glass-card p-6 hover:-translate-y-1 hover:shadow-lg">
+                <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center text-xl mb-4"><i class="fas fa-bullhorn"></i></div>
+                <h2 class="font-display font-bold text-gray-800 mb-1">Telegram Channel</h2>
+                <p class="text-xs text-gray-500 leading-relaxed">Follow along for updates and announcements across the NEELAXMI project.</p>
+                <p class="text-xs font-bold text-indigo-600 mt-3">t.me/NEELAXMI_OFFICIAL →</p>
+            </a>
+            <a href="mailto:support@neetranker.example.com" class="glass-card p-6 hover:-translate-y-1 hover:shadow-lg">
+                <div class="w-12 h-12 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center text-xl mb-4"><i class="fas fa-envelope"></i></div>
+                <h2 class="font-display font-bold text-gray-800 mb-1">Email</h2>
+                <p class="text-xs text-gray-500 leading-relaxed">For anything you'd rather put in writing.</p>
+                <p class="text-xs font-bold text-indigo-600 mt-3">support@neetranker.example.com →</p>
+            </a>
+            <a href="index.html#faq" class="glass-card p-6 hover:-translate-y-1 hover:shadow-lg">
+                <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-500 flex items-center justify-center text-xl mb-4"><i class="fas fa-circle-question"></i></div>
+                <h2 class="font-display font-bold text-gray-800 mb-1">Check the FAQ first</h2>
+                <p class="text-xs text-gray-500 leading-relaxed">Common questions about accounts, privacy, and rank projections are answered there directly.</p>
+                <p class="text-xs font-bold text-indigo-600 mt-3">Browse FAQ →</p>
+            </a>
+        </div>
+
+        <div class="mt-6 text-xs text-amber-600 bg-amber-50 border border-amber-100 rounded-xl p-4">
+            <i class="fas fa-circle-info mr-1.5"></i><strong>Note for the site owner:</strong> the email above is a placeholder (<code>support@neetranker.example.com</code>) — swap it for a real inbox you monitor before publishing.
+        </div>
+    </main>
+
+    <footer class="bg-indigo-950 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 py-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-indigo-200/50">
+            <p>&copy; 2026 NEET Ranker. Part of the NEELAXMI Union.</p>
+            <div class="flex flex-wrap justify-center gap-x-5 gap-y-1">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="about-us.html" class="hover:text-white transition">About Us</a>
+                <a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
+                <a href="terms-of-service.html" class="hover:text-white transition">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
