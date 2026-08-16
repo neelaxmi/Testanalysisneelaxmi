@@ -1,13 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard | NEET Ranker - Test Analysis & Mistake Tracker</title>
-    <!-- This is the gated application. It carries no unique crawlable content of its own,
-         so it is intentionally excluded from indexing to keep search quality signals on
-         index.html (the public landing/content hub). See IMPLEMENTATION-SUMMARY.md. -->
     <meta name="robots" content="noindex, nofollow" />
     <meta name="google-site-verification" content="iatylsdA3ilcUEyKshZLLZmpDIh6TMUdj7qjgoLTWxw" />
     <meta name="msvalidate.01" content="C5154EDBD6D7155F34F8705832BDFD16" />
@@ -138,6 +134,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             transform: translateY(-1px);
         }
 
+        /* Social Sign-In Buttons */
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.7rem 0.75rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: #334155;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .social-btn:hover:not(:disabled) {
+            border-color: #cbd5e1;
+            background: #f8fafc;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 14px -4px rgba(0, 0, 0, 0.08);
+        }
+        .social-btn:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .social-btn i { font-size: 1rem; }
+
         /* Table Styling */
         .custom-table thead th {
             background-color: #f8fafc;
@@ -259,7 +284,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <button id="signup-tab" class="flex-1 py-2.5 text-sm font-medium rounded-lg text-gray-500 hover:text-gray-700 transition-all">Sign Up</button>
                 </div>
 
+                <!-- Social Sign-In -->
+                <div class="grid grid-cols-2 gap-2.5 mb-2.5">
+                    <button type="button" id="google-signin-btn" class="social-btn">
+                        <i class="fa-brands fa-google" style="color:#EA4335;"></i> Google
+                    </button
+                    <button type="button" id="yahoo-signin-btn" class="social-btn">
+                        <i class="fa-brands fa-yahoo" style="color:#6001D2;"></i> Yahoo
+                    </button>
+                </div>
+
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="h-px bg-gray-200 flex-1"></div>
+                    <span class="text-[11px] text-gray-400 font-bold uppercase tracking-wide">or use email</span>
+                    <div class="h-px bg-gray-200 flex-1"></div>
+                </div>
+
                 <form id="auth-form" class="space-y-5">
+                    <div id="auth-name-field" class="hidden">
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-1 ml-1">Full Name</label>
+                        <input type="text" id="auth-name" class="modern-input w-full rounded-lg px-4 py-3 bg-gray-50 focus:bg-white outline-none" placeholder="Jane Doe" autocomplete="name">
+                    </div>
                     <div>
                         <label class="block text-xs font-bold text-gray-500 uppercase mb-1 ml-1">Email</label>
                         <input type="email" id="auth-email" required class="modern-input w-full rounded-lg px-4 py-3 bg-gray-50 focus:bg-white outline-none" placeholder="student@example.com">
@@ -631,13 +676,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script type="module">
        // --- Firebase Module Imports ---
        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-       import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+       import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInAnonymously, signInWithCustomToken, signInWithPopup, GoogleAuthProvider, OAuthProvider, updateProfile } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
        import { getFirestore, doc, addDoc, deleteDoc, onSnapshot, collection, query, serverTimestamp, setLogLevel, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
 const firebaseLogic = (() => {
   const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-neet-app';
   const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
-    // THIS SECTION MUST CONTAIN YOUR WEB APP'S CONFIGURATION
     apiKey: "AIzaSyAbb-upF-alE7b4rnFiATVMmnLO79aBn9g",
                 authDomain: "tracker-4afba.firebaseapp.com",
                 projectId: "tracker-4afba",
@@ -746,7 +790,25 @@ const firebaseLogic = (() => {
                };
                await updateDoc(docRef, dataToUpdate);
            }
-           
+
+           async function signInWithProvider(providerName) {
+               if (!auth) throw new Error("Authentication isn't ready yet. Please try again in a moment.");
+               let provider;
+               if (providerName === 'google') {
+                   provider = new GoogleAuthProvider();
+                   provider.setCustomParameters({ prompt: 'select_account' });
+               } else if (providerName === 'yahoo') {
+                   provider = new OAuthProvider('yahoo.com');
+               } else {
+                   throw new Error('Unsupported sign-in provider: ' + providerName);
+               }
+               return signInWithPopup(auth, provider);
+           }
+
+           async function setDisplayName(user, name) {
+               if (!user || !name) return;
+               await updateProfile(user, { displayName: name });
+           }
 
            return {
                getAppInstance: () => app,
@@ -760,6 +822,8 @@ const firebaseLogic = (() => {
                addTestResult,
                deleteTestResult,
                updateTestResult,
+               signInWithProvider,
+               setDisplayName,
                setOnAuthStateChange: (callback) => { onAuthStateChangeCallback = callback; },
                setOnDataError: (callback) => { onDataErrorCallback = callback; },
                formatDate: formatDate,
@@ -767,7 +831,6 @@ const firebaseLogic = (() => {
       })();
 
       const appLogic = ((firebase) => {
-          // --- DOM Elements ---
           const authContainer = document.getElementById('auth-container');
           const dashboard = document.getElementById('dashboard');
           const authStatusEl = document.getElementById('auth-status');
@@ -780,8 +843,8 @@ const firebaseLogic = (() => {
           const validationMessage = document.getElementById('validation-message');
           const editValidationMessage = document.getElementById('edit-validation-message');
           const editModal = document.getElementById('edit-modal');
-
-          // --- State ---
+          const authNameField = document.getElementById('auth-name-field');
+          const authNameInput = document.getElementById('auth-name');
           let isLoginMode = true;
           let localTestResults = [];
           const fixedCategories = [
@@ -792,7 +855,6 @@ const firebaseLogic = (() => {
               { id: 'unattempted_time', name: 'Time Mgmt', color: 'rgba(153, 102, 255, 0.7)' },
           ];
 
-          // --- Chart Instances (Global) ---
           let totalScoreChartInstance = null;
           let combinedChartInstance = null;
           let profileChartInstance = null;
@@ -802,7 +864,6 @@ const firebaseLogic = (() => {
           let chemistryScoreChartInstance = null;
           let biologyScoreChartInstance = null;
 
-          // --- Utility Functions ---
           const showToast = (message) => {
               const box = document.getElementById('message-box');
               // Update box content manually to keep the icon
@@ -848,6 +909,15 @@ const firebaseLogic = (() => {
               isLoginMode = isLogin;
               authTitle.textContent = isLogin ? 'Welcome Back' : 'Create Account';
               authSubmitBtn.textContent = isLogin ? 'Log In' : 'Sign Up';
+
+              // Only ask for a name when creating a new account
+              if (isLogin) {
+                  authNameField.classList.add('hidden');
+                  authNameInput.removeAttribute('required');
+              } else {
+                  authNameField.classList.remove('hidden');
+                  authNameInput.setAttribute('required', 'required');
+              }
               
               // Updated Styling Toggle for New UI
               if (isLogin) {
@@ -1522,16 +1592,72 @@ const firebaseLogic = (() => {
                   authSubmitBtn.disabled = true;
                   authSubmitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
                   try {
-                      if (isLoginMode) await signInWithEmailAndPassword(auth, document.getElementById('auth-email').value, document.getElementById('auth-password').value);
-                      else await createUserWithEmailAndPassword(auth, document.getElementById('auth-email').value, document.getElementById('auth-password').value);
+                      if (isLoginMode) {
+                          await signInWithEmailAndPassword(auth, document.getElementById('auth-email').value, document.getElementById('auth-password').value);
+                      } else {
+                          const name = authNameInput.value.trim();
+                          const cred = await createUserWithEmailAndPassword(auth, document.getElementById('auth-email').value, document.getElementById('auth-password').value);
+                          if (name) {
+                              await firebase.setDisplayName(cred.user, name);
+                              // Reflect the name immediately; the auth-state listener may
+                              // have already rendered the pill before the name was set.
+                              const statusEl = document.getElementById('auth-status');
+                              if (statusEl) statusEl.innerHTML = `<i class="fas fa-user-circle mr-2"></i> ${name}`;
+                          }
+                      }
                   } 
 catch (err) {
     console.error(err); // Look at your browser console (F12)
-    authMessage.textContent = err.message; // This will show the actual error
+    if (err.code === 'auth/account-exists-with-different-credential') {
+        authMessage.textContent = 'An account already exists for this email using a different sign-in method. Try logging in the way you originally signed up.';
+    } else {
+        authMessage.textContent = err.message; // This will show the actual error
+    }
                   } finally {
                       authSubmitBtn.disabled = false;
                       authSubmitBtn.textContent = isLoginMode ? 'Log In' : 'Sign Up';
                   }
+              });
+
+              // Social Sign-In Listeners
+              const handleSocialSignIn = async (providerName, btn) => {
+                  authMessage.textContent = '';
+                  const originalHTML = btn.innerHTML;
+                  btn.disabled = true;
+                  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                  try {
+                      await firebase.signInWithProvider(providerName);
+                      // The onAuthStateChanged listener below takes it from here.
+                  } catch (err) {
+                      console.error(err);
+                      if (err.code === 'auth/popup-closed-by-user' || err.code === 'auth/cancelled-popup-request') {
+                          // User closed the popup — no error needed.
+                      } else if (err.code === 'auth/account-exists-with-different-credential') {
+                          authMessage.textContent = 'An account already exists for this email using a different sign-in method. Try logging in the way you originally signed up.';
+                      } else if (err.code === 'auth/operation-not-allowed') {
+                          const label = providerName.charAt(0).toUpperCase() + providerName.slice(1);
+                          authMessage.textContent = `${label} sign-in isn't turned on yet for this project. Enable it in Firebase Console under Authentication > Sign-in method.`;
+                      } else {
+                          authMessage.textContent = err.message;
+                      }
+                  } finally {
+                      btn.disabled = false;
+                      btn.innerHTML = originalHTML;
+                  }
+              };
+
+              document.getElementById('google-signin-btn').addEventListener('click', (e) => handleSocialSignIn('google', e.currentTarget));
+              document.getElementById('microsoft-signin-btn').addEventListener('click', (e) => handleSocialSignIn('microsoft', e.currentTarget));
+              document.getElementById('yahoo-signin-btn').addEventListener('click', (e) => handleSocialSignIn('yahoo', e.currentTarget));
+              document.getElementById('apple-signin-btn').addEventListener('click', (e) => handleSocialSignIn('apple', e.currentTarget));
+
+              // Telegram doesn't speak Firebase's OAuth dialect — its Login Widget
+              // needs a bot (via @BotFather) plus a small backend to verify the
+              // signed payload and mint a Firebase custom token. That backend piece
+              // isn't wired up yet, so we surface a clear message instead of a
+              // silent failure. Ask to have it built once you have a bot ready.
+              document.getElementById('telegram-signin-btn').addEventListener('click', () => {
+                  authMessage.textContent = 'Telegram sign-in needs one more setup step (a bot + a small backend) before it can log people in. Ask to have that wired up.';
               });
 
               // Table Action Listeners (Delegation)
@@ -1567,14 +1693,14 @@ firebase.setOnAuthStateChange((user) => {
         dashboard.style.display = 'block';
         authStatusContainer.classList.remove('hidden');
         logoutBtn.classList.remove('hidden');
-        authStatus.innerHTML = `<i class="fas fa-user-circle mr-2"></i> ${user.email}`;
+        authStatus.innerHTML = `<i class="fas fa-user-circle mr-2"></i> ${user.displayName || user.email}`;
 
         // Corrected the function call here
         firebase.subscribeToTestResults((results) => {
             handleDataUpdate(results); 
         });
 
-        showToast("Welcome back!");
+        showToast(user.displayName ? `Welcome, ${user.displayName.split(' ')[0]}!` : "Welcome back!");
     } else {
         authContainer.style.display = 'block';
         dashboard.style.display = 'none';
